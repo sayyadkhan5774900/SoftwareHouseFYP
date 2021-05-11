@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'ProjectFYP',
+    'site_title' => 'Socio Tech',
 ];
