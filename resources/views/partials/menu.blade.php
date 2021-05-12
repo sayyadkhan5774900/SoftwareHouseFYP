@@ -78,16 +78,37 @@
             </li>
         @endcan
         @can('services_dropdown_access')
-            <li class="c-sidebar-nav-item">
+
+            <li class="c-sidebar-nav-title">Services</li>
+
+            {{-- <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.services-dropdowns.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/services-dropdowns") || request()->is("admin/services-dropdowns/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-server c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.servicesDropdown.title') }}
                 </a>
+            </li> --}}
+
+            <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+                <a href="#" class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle {{ request()->is("admin/services-dropdowns") || request()->is("admin/services-dropdowns/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-server c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.servicesDropdown.title') }}
+                </a>
+                 <ul class="c-sidebar-nav-dropdown-items">
+                    @foreach(App\Models\Service::SERVICE_SELECT as $key => $label)
+                        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="admin/services-dropdowns/{{$key}}"><span class="c-sidebar-nav-icon"></span>{{ $label}}</a></li>
+                    @endforeach
+                </ul>
             </li>
+
         @endcan
         @can('add_new_order_access')
+          
+            <li class="c-sidebar-nav-title">Orders</li>
+
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.add-new-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/add-new-orders") || request()->is("admin/add-new-orders/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
@@ -109,7 +130,7 @@
         @endcan
         @can('add_new_service_access')
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.add-new-services.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/add-new-services") || request()->is("admin/add-new-services/*") ? "c-active" : "" }}">
+                <a href="{{ route("admin.add-new-services.create") }}" class="c-sidebar-nav-link {{ request()->is("admin/add-new-services") || request()->is("admin/add-new-services/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-file c-sidebar-nav-icon">
 
                     </i>

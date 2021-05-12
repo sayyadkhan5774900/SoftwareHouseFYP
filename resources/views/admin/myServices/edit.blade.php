@@ -1,44 +1,21 @@
-{{-- @extends('layouts.admin')
-@section('content')
-
-<div class="card">
-    <div class="card-header">
-        {{ trans('cruds.addNewOrder.title') }}
-    </div>
-
-    <div class="card-body">
-        <p>
-            Text coming soon... Text coming soon...
-        </p>
-    </div>
-</div>
-
-
-
-@endsection --}}
-
 @extends('layouts.admin')
 @section('content')
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.addNewOrder.title') }}
+        {{ trans('global.edit') }} {{ trans('cruds.service.title_singular') }}
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.add-new-orders.store") }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.services.update", [$service->id]) }}" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
-            
-            <p>
-              Lorem Ipsome asdjlk lkjda wqe lkjads lj asde je as,ljd qwlekjn sadj 3jasd,nn  
-            </p>
-
-            <div class="form-group row">
-                <label class="required col-md-1 col-form-label">{{ trans('cruds.order.fields.service') }}</label>
-                <select class="form-control col-md-4 ml-5 {{ $errors->has('service') ? 'is-invalid' : '' }}" name="service" id="service" required>
+            <div class="form-group">
+                <label class="required">{{ trans('cruds.service.fields.service') }}</label>
+                <select class="form-control {{ $errors->has('service') ? 'is-invalid' : '' }}" name="service" id="service" required>
                     <option value disabled {{ old('service', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Order::SERVICE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('service', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @foreach(App\Models\Service::SERVICE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('service', $service->service) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('service'))
@@ -46,67 +23,60 @@
                         {{ $errors->first('service') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.order.fields.service_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.service.fields.service_helper') }}</span>
             </div>
-            <div class="form-group mr-5">
-                <label for="description">{{ trans('cruds.order.fields.description') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description') !!}</textarea>
+            <div class="form-group">
+                <label for="description">{{ trans('cruds.service.fields.description') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description', $service->description) !!}</textarea>
                 @if($errors->has('description'))
                     <div class="invalid-feedback">
                         {{ $errors->first('description') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.order.fields.description_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.service.fields.description_helper') }}</span>
             </div>
-            
-            <div class='row'>
-                <div class="form-group col-md-6 row">
-                    <label class="required col-md-3 col-form-label" for="address">{{ trans('cruds.order.fields.address') }}</label>
-                    <input class="form-control col-md-9 {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', '') }}" required>
-                    @if($errors->has('address'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('address') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.order.fields.address_helper') }}</span>
-                </div>
-                <div class="form-group col-md-6 row">
-                    <label class="required col-md-3 col-form-label" for="city">{{ trans('cruds.order.fields.city') }}</label>
-                    <input class="form-control col-md-9 {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{ old('city', '') }}" required>
-                    @if($errors->has('city'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('city') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.order.fields.city_helper') }}</span>
-                </div>
-            </div>
-
-            <div class='row'> 
-                <div class="form-group col-md-6 row">
-                    <label class='col-md-3 col-form-label' for="postcode">{{ trans('cruds.order.fields.postcode') }}</label>
-                    <input class="form-control col-md-9 {{ $errors->has('postcode') ? 'is-invalid' : '' }}" type="text" name="postcode" id="postcode" value="{{ old('postcode', '') }}">
-                    @if($errors->has('postcode'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('postcode') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.order.fields.postcode_helper') }}</span>
-                </div>
-                <div class="form-group col-md-6 row">
-                    <label class="required col-md-3 col-form-label" for="contact">{{ trans('cruds.order.fields.contact') }}</label>
-                    <input class="form-control col-md-9 {{ $errors->has('contact') ? 'is-invalid' : '' }}" type="text" name="contact" id="contact" value="{{ old('contact', '') }}" required>
-                    @if($errors->has('contact'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('contact') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.order.fields.contact_helper') }}</span>
-                </div>
-            </div>
-            
             <div class="form-group">
-                <label for="file">{{ trans('cruds.order.fields.file') }}</label>
+                <label class="required" for="address">{{ trans('cruds.service.fields.address') }}</label>
+                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $service->address) }}" required>
+                @if($errors->has('address'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('address') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.service.fields.address_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="city">{{ trans('cruds.service.fields.city') }}</label>
+                <input class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{ old('city', $service->city) }}" required>
+                @if($errors->has('city'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('city') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.service.fields.city_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="postcode">{{ trans('cruds.service.fields.postcode') }}</label>
+                <input class="form-control {{ $errors->has('postcode') ? 'is-invalid' : '' }}" type="text" name="postcode" id="postcode" value="{{ old('postcode', $service->postcode) }}">
+                @if($errors->has('postcode'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('postcode') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.service.fields.postcode_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="contact">{{ trans('cruds.service.fields.contact') }}</label>
+                <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}" type="text" name="contact" id="contact" value="{{ old('contact', $service->contact) }}" required>
+                @if($errors->has('contact'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('contact') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.service.fields.contact_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="file">{{ trans('cruds.service.fields.file') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('file') ? 'is-invalid' : '' }}" id="file-dropzone">
                 </div>
                 @if($errors->has('file'))
@@ -114,25 +84,24 @@
                         {{ $errors->first('file') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.order.fields.file_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.service.fields.file_helper') }}</span>
             </div>
             <div class="form-group">
                 <div class="form-check {{ $errors->has('meeting') ? 'is-invalid' : '' }}">
                     <input type="hidden" name="meeting" value="0">
-                    <input class="form-check-input" type="checkbox" name="meeting" id="meeting" value="1" {{ old('meeting', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="meeting">{{ trans('cruds.order.fields.meeting') }}</label>
+                    <input class="form-check-input" type="checkbox" name="meeting" id="meeting" value="1" {{ $service->meeting || old('meeting', 0) === 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="meeting">{{ trans('cruds.service.fields.meeting') }}</label>
                 </div>
                 @if($errors->has('meeting'))
                     <div class="invalid-feedback">
                         {{ $errors->first('meeting') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.order.fields.meeting_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.service.fields.meeting_helper') }}</span>
             </div>
-
-            <div class="form-group text-center">
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
-                    Place Order
+                    {{ trans('global.save') }}
                 </button>
             </div>
         </form>
@@ -155,7 +124,7 @@
               return new Promise(function(resolve, reject) {
                 // Init request
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', '{{ route('admin.orders.storeCKEditorImages') }}', true);
+                xhr.open('POST', '{{ route('admin.services.storeCKEditorImages') }}', true);
                 xhr.setRequestHeader('x-csrf-token', window._token);
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.responseType = 'json';
@@ -188,7 +157,7 @@
                 // Send request
                 var data = new FormData();
                 data.append('upload', file);
-                data.append('crud_id', '{{ $order->id ?? 0 }}');
+                data.append('crud_id', '{{ $service->id ?? 0 }}');
                 xhr.send(data);
               });
             })
@@ -210,7 +179,7 @@
 
 <script>
     Dropzone.options.fileDropzone = {
-    url: '{{ route('admin.orders.storeMedia') }}',
+    url: '{{ route('admin.services.storeMedia') }}',
     maxFilesize: 10, // MB
     maxFiles: 1,
     addRemoveLinks: true,
@@ -232,8 +201,8 @@
       }
     },
     init: function () {
-@if(isset($order) && $order->file)
-      var file = {!! json_encode($order->file) !!}
+@if(isset($service) && $service->file)
+      var file = {!! json_encode($service->file) !!}
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="file" value="' + file.file_name + '">')

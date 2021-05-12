@@ -42,16 +42,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('services-dropdowns', 'ServicesDropdownController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Add New Order
-    Route::resource('add-new-orders', 'AddNewOrderController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::resource('add-new-orders', 'AddNewOrderController', ['except' => ['create', 'edit', 'update', 'show', 'destroy']]);
 
     // Client Active Orders
-    Route::resource('client-active-orders', 'ClientActiveOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::resource('client-active-orders', 'ClientActiveOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
     // Add New Service
-    Route::resource('add-new-services', 'AddNewServiceController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::resource('add-new-services', 'AddNewServiceController', ['except' => ['index', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // My Services
-    Route::resource('my-services', 'MyServicesController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::delete('my-services/destroy', 'MyServicesController@massDestroy')->name('my-services.massDestroy');
+    Route::post('my-services/media', 'MyServicesController@storeMedia')->name('my-services.storeMedia');
+    Route::post('my-services/ckmedia', 'MyServicesController@storeCKEditorImages')->name('my-services.storeCKEditorImages');
+    Route::resource('my-services', 'MyServicesController', ['except' => ['create']]);
 
     // New Orders
     Route::resource('new-orders', 'NewOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
