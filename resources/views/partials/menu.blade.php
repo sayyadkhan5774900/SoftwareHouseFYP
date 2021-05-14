@@ -110,7 +110,7 @@
             <li class="c-sidebar-nav-title">Orders</li>
 
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.add-new-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/add-new-orders") || request()->is("admin/add-new-orders/*") ? "c-active" : "" }}">
+                <a href="{{ route("admin.add-new-orders.create") }}" class="c-sidebar-nav-link {{ request()->is("admin/add-new-orders") || request()->is("admin/add-new-orders/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
 
                     </i>

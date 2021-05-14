@@ -13,11 +13,11 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class AddNewOrderController extends Controller
 {
-    public function index()
+    public function create()
     {
         abort_if(Gate::denies('add_new_order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.addNewOrders.index');
+        return view('admin.addNewOrders.create');
     }
 
     public function store(StoreOrderRequest $request)

@@ -49,7 +49,7 @@
                 <span class="help-block">{{ trans('cruds.order.fields.service_helper') }}</span>
             </div>
             <div class="form-group mr-5">
-                <label for="description">{{ trans('cruds.order.fields.description') }}</label>
+                <label class="required" for="description">{{ trans('cruds.order.fields.description') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description') !!}</textarea>
                 @if($errors->has('description'))
                     <div class="invalid-feedback">

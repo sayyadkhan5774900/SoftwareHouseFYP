@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('services-dropdowns', 'ServicesDropdownController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Add New Order
-    Route::resource('add-new-orders', 'AddNewOrderController', ['except' => ['create', 'edit', 'update', 'show', 'destroy']]);
+    Route::resource('add-new-orders', 'AddNewOrderController', ['except' => ['index', 'edit', 'update', 'show', 'destroy']]);
 
     // Client Active Orders
     Route::resource('client-active-orders', 'ClientActiveOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
