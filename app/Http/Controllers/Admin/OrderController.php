@@ -31,9 +31,7 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $clients = User::with('roles')->whereHas('roles', function($query) {
-            $query->where('title','Client');
-        })->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $clients = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $service_providers = User::with('roles')->whereHas('roles', function($query) {
             $query->where('title','Provider');
