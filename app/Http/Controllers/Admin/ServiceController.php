@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyServiceRequest;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Models\Service;
+use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -21,7 +22,7 @@ class ServiceController extends Controller
     {
         abort_if(Gate::denies('service_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = Service::with(['media'])->get();
+        $services = Service::with(['provider', 'media'])->get();
 
         return view('admin.services.index', compact('services'));
     }
@@ -52,7 +53,11 @@ class ServiceController extends Controller
     {
         abort_if(Gate::denies('service_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.services.edit', compact('service'));
+        $providers = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $service->load('provider');
+
+        return view('admin.services.edit', compact('providers', 'service'));
     }
 
     public function update(UpdateServiceRequest $request, Service $service)
@@ -76,6 +81,8 @@ class ServiceController extends Controller
     public function show(Service $service)
     {
         abort_if(Gate::denies('service_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $service->load('provider');
 
         return view('admin.services.show', compact('service'));
     }

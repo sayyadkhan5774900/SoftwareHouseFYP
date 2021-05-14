@@ -44,6 +44,7 @@ class Service extends Model implements HasMedia
         'postcode',
         'contact',
         'meeting',
+        'provider_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -58,6 +59,11 @@ class Service extends Model implements HasMedia
     public function getFileAttribute()
     {
         return $this->getMedia('file')->last();
+    }
+
+    public function provider()
+    {
+        return $this->belongsTo(User::class, 'provider_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

@@ -41,6 +41,9 @@
                             {{ trans('cruds.service.fields.meeting') }}
                         </th>
                         <th>
+                            {{ trans('cruds.service.fields.provider') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -69,6 +72,9 @@
                             <td>
                                 <span style="display:none">{{ $service->meeting ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $service->meeting ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                {{ $service->provider->name ?? '' }}
                             </td>
                             <td>
                                 @can('service_show')

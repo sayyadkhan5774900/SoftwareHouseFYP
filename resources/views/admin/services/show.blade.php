@@ -91,6 +91,14 @@
                             <input type="checkbox" disabled="disabled" {{ $service->meeting ? 'checked' : '' }}>
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.service.fields.provider') }}
+                        </th>
+                        <td>
+                            {{ $service->provider->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
