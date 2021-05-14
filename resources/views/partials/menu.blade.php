@@ -196,17 +196,6 @@
                 </a>
             </li>
         @endcan
-        @can('active_service_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.active-services.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/active-services") || request()->is("admin/active-services/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fab fa-servicestack c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.activeService.title') }}
-                </a>
-            </li>
-        @endcan
-
         @can('client_access')
         <li class="c-sidebar-nav-item">
             <a href="{{ route("admin.clients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/clients") || request()->is("admin/clients/*") ? "c-active" : "" }}">
