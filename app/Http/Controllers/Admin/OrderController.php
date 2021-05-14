@@ -31,7 +31,9 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $clients = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $clients = User::with('roles')->whereHas('roles', function($query) {
+            $query->where('title','Client');
+        })->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $service_providers = User::with('roles')->whereHas('roles', function($query) {
             $query->where('title','Provider');
@@ -59,17 +61,13 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $clients = User::with('roles')->whereHas('roles', function($query) {
-            $query->where('title','Client');
-        })->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $service_providers = User::with('roles')->whereHas('roles', function($query) {
             $query->where('title','Provider');
         })->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $order->load('client', 'service_provider');
 
-        return view('admin.orders.edit', compact('clients', 'service_providers', 'order'));
+        return view('admin.orders.edit', compact('service_providers', 'order'));
     }
 
     public function update(UpdateOrderRequest $request, Order $order)
