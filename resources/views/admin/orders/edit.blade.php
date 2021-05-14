@@ -100,6 +100,20 @@
                 <span class="help-block">{{ trans('cruds.order.fields.meeting_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="client_id">{{ trans('cruds.order.fields.client') }}</label>
+                <select class="form-control select2 {{ $errors->has('client') ? 'is-invalid' : '' }}" name="client_id" id="client_id">
+                    @foreach($clients as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('client_id') ? old('client_id') : $order->client->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('client'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('client') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.order.fields.client_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="service_provider_id">{{ trans('cruds.order.fields.service_provider') }}</label>
                 <select class="form-control select2 {{ $errors->has('service_provider') ? 'is-invalid' : '' }}" name="service_provider_id" id="service_provider_id">
                     @foreach($service_providers as $id => $entry)

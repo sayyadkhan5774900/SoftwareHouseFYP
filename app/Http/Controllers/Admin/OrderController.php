@@ -31,9 +31,11 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $clients = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $service_providers = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.orders.create', compact('service_providers'));
+        return view('admin.orders.create', compact('clients', 'service_providers'));
     }
 
     public function store(StoreOrderRequest $request)
@@ -55,11 +57,13 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $clients = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $service_providers = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $order->load('client', 'service_provider');
 
-        return view('admin.orders.edit', compact('service_providers', 'order'));
+        return view('admin.orders.edit', compact('clients', 'service_providers', 'order'));
     }
 
     public function update(UpdateOrderRequest $request, Order $order)
