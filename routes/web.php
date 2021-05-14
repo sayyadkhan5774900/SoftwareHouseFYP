@@ -62,9 +62,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Service Providers
     Route::resource('service-providers', 'ServiceProvidersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
-    // Active Services
-    Route::resource('active-services', 'ActiveServicesController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
-
     // My Orders
     Route::resource('my-orders', 'MyOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 

@@ -148,18 +148,14 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 35,
-                'title' => 'active_service_access',
-            ],
-            [
-                'id'    => 36,
                 'title' => 'my_order_access',
             ],
             [
-                'id'    => 37,
+                'id'    => 36,
                 'title' => 'client_access',
             ],
             [
-                'id'    => 38,
+                'id'    => 37,
                 'title' => 'profile_password_edit',
             ],
         ];

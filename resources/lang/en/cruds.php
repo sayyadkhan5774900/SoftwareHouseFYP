@@ -171,10 +171,6 @@ return [
         'title'          => 'Service Providers',
         'title_singular' => 'Service Provider',
     ],
-    'activeService' => [
-        'title'          => 'Active Services',
-        'title_singular' => 'Active Service',
-    ],
     'myOrder' => [
         'title'          => 'My Orders',
         'title_singular' => 'My Order',
