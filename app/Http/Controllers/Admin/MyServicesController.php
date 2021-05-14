@@ -9,7 +9,9 @@ use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Models\Service;
 use Gate;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\ViewErrorBag;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,7 +24,7 @@ class MyServicesController extends Controller
     {
         abort_if(Gate::denies('my_service_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = Service::where('')->with(['media'])->get();
+        $services = Service::where('provider_id',auth()->user()->id)->with(['media'])->get();
 
         return view('admin.myServices.index', compact('services'));
     }
@@ -30,7 +32,18 @@ class MyServicesController extends Controller
 
     public function store(StoreServiceRequest $request)
     {
+
+        $count = Service::where('provider_id',auth()->user()->id)->count();
+
+        if($count >= 5){
+            return redirect()->route('admin.my-services.index')->withErrors(['max serives', 'You can not CREATE more than five serives']);
+        }
+
         $service = Service::create($request->all());
+        
+        $service->update([
+            'provider_id' => auth()->user()->id,
+        ]);
 
         if ($request->input('file', false)) {
             $service->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
