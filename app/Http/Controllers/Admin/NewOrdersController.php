@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,8 @@ class NewOrdersController extends Controller
     {
         abort_if(Gate::denies('new_order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.newOrders.index');
+        $orders = Order::whereNull('service_provider_id')->with(['client', 'media'])->get();
+
+        return view('admin.newOrders.index', compact('orders') );
     }
 }
