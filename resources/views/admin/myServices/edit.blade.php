@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.services.update", [$service->id]) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.my-services.update", [$service->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="form-group">
@@ -124,7 +124,7 @@
               return new Promise(function(resolve, reject) {
                 // Init request
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', '{{ route('admin.services.storeCKEditorImages') }}', true);
+                xhr.open('POST', '{{ route('admin.my-services.storeCKEditorImages') }}', true);
                 xhr.setRequestHeader('x-csrf-token', window._token);
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.responseType = 'json';
@@ -179,7 +179,7 @@
 
 <script>
     Dropzone.options.fileDropzone = {
-    url: '{{ route('admin.services.storeMedia') }}',
+    url: '{{ route('admin.my-services.storeMedia') }}',
     maxFilesize: 10, // MB
     maxFiles: 1,
     addRemoveLinks: true,

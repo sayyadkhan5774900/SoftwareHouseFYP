@@ -22,7 +22,7 @@ class MyServicesController extends Controller
     {
         abort_if(Gate::denies('my_service_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = Service::with(['media'])->get();
+        $services = Service::where('')->with(['media'])->get();
 
         return view('admin.myServices.index', compact('services'));
     }
@@ -43,15 +43,20 @@ class MyServicesController extends Controller
         return redirect()->route('admin.my-services.index');
     }
 
-    public function edit(Service $service)
+    public function edit($id)
     {
         abort_if(Gate::denies('service_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $service = Service::find($id);
 
         return view('admin.myServices.edit', compact('service'));
     }
 
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(UpdateServiceRequest $request, $id)
     {
+
+        $service = Service::find($id);
+
         $service->update($request->all());
 
         if ($request->input('file', false)) {
@@ -68,16 +73,20 @@ class MyServicesController extends Controller
         return redirect()->route('admin.my-services.index');
     }
 
-    public function show(Service $service)
+    public function show($id)
     {
         abort_if(Gate::denies('service_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $service = Service::find($id);
 
         return view('admin.myServices.show', compact('service'));
     }
 
-    public function destroy(Service $service)
+    public function destroy($id)
     {
         abort_if(Gate::denies('service_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $service = Service::find($id);
 
         $service->delete();
 
