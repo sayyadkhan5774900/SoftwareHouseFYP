@@ -156,6 +156,10 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 37,
+                'title' => 'client_access',
+            ],
+            [
+                'id'    => 38,
                 'title' => 'profile_password_edit',
             ],
         ];

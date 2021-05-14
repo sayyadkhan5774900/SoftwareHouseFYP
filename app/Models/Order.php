@@ -17,8 +17,14 @@ class Order extends Model implements HasMedia
     use HasFactory;
 
     public const STATUS_SELECT = [
-        'approved' => 'Approved',
-        'refuse'   => 'Refuse',
+        'approved'    => 'Approved',
+        'refuse'      => 'Refuse',
+        'pending'     => 'Pending',
+        'in_review'   => 'In Review',
+        'accepted'    => 'Accepted',
+        'in_progress' => 'In Progress',
+        'delivered'   => 'Delivered',
+        'completed'   => 'Completed',
     ];
 
     public const SERVICE_SELECT = [

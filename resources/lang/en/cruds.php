@@ -179,4 +179,8 @@ return [
         'title'          => 'My Orders',
         'title_singular' => 'My Order',
     ],
+    'client' => [
+        'title'          => 'Clients',
+        'title_singular' => 'Client',
+    ],
 ];
