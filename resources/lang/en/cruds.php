@@ -175,4 +175,8 @@ return [
         'title'          => 'Active Services',
         'title_singular' => 'Active Service',
     ],
+    'myOrder' => [
+        'title'          => 'My Orders',
+        'title_singular' => 'My Order',
+    ],
 ];

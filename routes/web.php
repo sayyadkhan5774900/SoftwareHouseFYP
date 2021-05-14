@@ -64,6 +64,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Active Services
     Route::resource('active-services', 'ActiveServicesController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+
+    // My Orders
+    Route::resource('my-orders', 'MyOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

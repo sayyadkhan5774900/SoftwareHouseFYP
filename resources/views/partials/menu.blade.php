@@ -127,6 +127,16 @@
                 </a>
             </li>
         @endcan
+        @can('my_order_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.my-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/my-orders") || request()->is("admin/my-orders/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.myOrder.title') }}
+                </a>
+            </li>
+        @endcan
         @can('new_order_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.new-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/new-orders") || request()->is("admin/new-orders/*") ? "c-active" : "" }}">
