@@ -14,7 +14,17 @@ class ClientActiveOrdersController extends Controller
     {
         abort_if(Gate::denies('client_active_order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
-        $orders = Order::with(['client', 'service_provider', 'media'])->orderByDesc('id')->paginate(10);
+        $roles = auth()->user()->roles;
+
+        $orders = Order::whereNotNull('client_id')->whereNotNull('service_provider_id')->with(['client', 'service_provider', 'media'])->orderByDesc('id')->paginate(10);
+
+        if($roles[0]->title == 'Provider'){
+            $orders = Order::where('service_provider_id',auth()->user()->id)->whereNotNull('client_id')->with(['client', 'service_provider', 'media'])->orderByDesc('id')->paginate(10);
+        } 
+      
+        if($roles[0]->title == 'Client'){
+            $orders = Order::where('client_id',auth()->user()->id)->whereNotNull('service_provider_id')->with(['client', 'service_provider', 'media'])->orderByDesc('id')->paginate(10);
+        }            
 
         return view('admin.clientActiveOrders.index', compact('orders'));
     }

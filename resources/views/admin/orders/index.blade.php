@@ -32,9 +32,6 @@
                             {{ trans('cruds.order.fields.city') }}
                         </th>
                         <th>
-                            {{ trans('cruds.order.fields.postcode') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.order.fields.contact') }}
                         </th>
                         <th>
@@ -42,12 +39,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.order.fields.client') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.order.fields.service_provider') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.email') }}
@@ -76,9 +67,6 @@
                                 {{ $order->city ?? '' }}
                             </td>
                             <td>
-                                {{ $order->postcode ?? '' }}
-                            </td>
-                            <td>
                                 {{ $order->contact ?? '' }}
                             </td>
                             <td>
@@ -90,12 +78,6 @@
                             </td>
                             <td>
                                 {{ $order->client->email ?? '' }}
-                            </td>
-                            <td>
-                                {{ $order->service_provider->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $order->service_provider->email ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Order::STATUS_SELECT[$order->status] ?? '' }}

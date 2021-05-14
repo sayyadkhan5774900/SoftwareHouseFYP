@@ -67,6 +67,7 @@
                 </a>
             </li>
         @endcan
+
         @can('service_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.services.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/services") || request()->is("admin/services/*") ? "c-active" : "" }}">
@@ -77,19 +78,12 @@
                 </a>
             </li>
         @endcan
+        
         @can('services_dropdown_access')
-
             <li class="c-sidebar-nav-title">Services</li>
-
-            {{-- <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.services-dropdowns.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/services-dropdowns") || request()->is("admin/services-dropdowns/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-server c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.servicesDropdown.title') }}
-                </a>
-            </li> --}}
-
+        @endcan
+        
+        @can('services_dropdown_access')
             <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
                 <a href="#" class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle {{ request()->is("admin/services-dropdowns") || request()->is("admin/services-dropdowns/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-server c-sidebar-nav-icon">
@@ -103,12 +97,13 @@
                     @endforeach
                 </ul>
             </li>
-
         @endcan
+        
         @can('add_new_order_access')
-          
             <li class="c-sidebar-nav-title">Orders</li>
+        @endcan
 
+        @can('add_new_order_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.add-new-orders.create") }}" class="c-sidebar-nav-link {{ request()->is("admin/add-new-orders") || request()->is("admin/add-new-orders/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
@@ -118,7 +113,22 @@
                 </a>
             </li>
         @endcan
+
+        @can('my_order_access')
+        <li class="c-sidebar-nav-item">
+            <a href="{{ route("admin.my-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/my-orders") || request()->is("admin/my-orders/*") ? "c-active" : "" }}">
+                <i class="fa-fw fas fa-list c-sidebar-nav-icon">
+
+                </i>
+                {{ trans('cruds.myOrder.title') }}
+            </a>
+        </li>
+        @endcan
+
         @can('client_active_order_access')
+
+            <li class="c-sidebar-nav-title">Active Orders</li>
+
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.client-active-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/client-active-orders") || request()->is("admin/client-active-orders/*") ? "c-active" : "" }}">
                     <i class="fa-fw fab fa-angular c-sidebar-nav-icon">
@@ -128,7 +138,12 @@
                 </a>
             </li>
         @endcan
+
+        
         @can('add_new_service_access')
+            
+            <li class="c-sidebar-nav-title">Services</li>
+            
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.add-new-services.create") }}" class="c-sidebar-nav-link {{ request()->is("admin/add-new-services") || request()->is("admin/add-new-services/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-file c-sidebar-nav-icon">
@@ -138,6 +153,7 @@
                 </a>
             </li>
         @endcan
+
         @can('my_service_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.my-services.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/my-services") || request()->is("admin/my-services/*") ? "c-active" : "" }}">
@@ -148,16 +164,7 @@
                 </a>
             </li>
         @endcan
-        @can('my_order_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.my-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/my-orders") || request()->is("admin/my-orders/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.myOrder.title') }}
-                </a>
-            </li>
-        @endcan
+        
         @can('new_order_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.new-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/new-orders") || request()->is("admin/new-orders/*") ? "c-active" : "" }}">
@@ -168,6 +175,7 @@
                 </a>
             </li>
         @endcan
+
         @can('active_order_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.active-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/active-orders") || request()->is("admin/active-orders/*") ? "c-active" : "" }}">

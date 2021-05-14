@@ -1,22 +1,21 @@
-
 @extends('layouts.admin')
 @section('content')
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.addNewOrder.title') }}
+        {{ trans('global.edit') }} {{ trans('cruds.order.title_singular') }}
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.add-new-orders.store") }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.orders.update", [$order->id]) }}" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
-
             <div class="form-group row">
                 <label class="required col-md-1 col-form-label">{{ trans('cruds.order.fields.service') }}</label>
                 <select class="form-control col-md-4 ml-5 {{ $errors->has('service') ? 'is-invalid' : '' }}" name="service" id="service" required>
                     <option value disabled {{ old('service', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\Models\Order::SERVICE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('service', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        <option value="{{ $key }}" {{ old('service', $order->service) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('service'))
@@ -27,8 +26,8 @@
                 <span class="help-block">{{ trans('cruds.order.fields.service_helper') }}</span>
             </div>
             <div class="form-group mr-5">
-                <label class="required" for="description">{{ trans('cruds.order.fields.description') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description') !!}</textarea>
+                <label for="description">{{ trans('cruds.order.fields.description') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description', $order->description) !!}</textarea>
                 @if($errors->has('description'))
                     <div class="invalid-feedback">
                         {{ $errors->first('description') }}
@@ -36,11 +35,11 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.order.fields.description_helper') }}</span>
             </div>
-            
             <div class='row'>
+
                 <div class="form-group col-md-6 row">
                     <label class="required col-md-3 col-form-label" for="address">{{ trans('cruds.order.fields.address') }}</label>
-                    <input class="form-control col-md-9 {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', '') }}" required>
+                    <input class="form-control col-md-9 {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $order->address) }}" required>
                     @if($errors->has('address'))
                         <div class="invalid-feedback">
                             {{ $errors->first('address') }}
@@ -50,7 +49,7 @@
                 </div>
                 <div class="form-group col-md-6 row">
                     <label class="required col-md-3 col-form-label" for="city">{{ trans('cruds.order.fields.city') }}</label>
-                    <input class="form-control col-md-9 {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{ old('city', '') }}" required>
+                    <input class="form-control col-md-9  {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{ old('city', $order->city) }}" required>
                     @if($errors->has('city'))
                         <div class="invalid-feedback">
                             {{ $errors->first('city') }}
@@ -63,7 +62,7 @@
             <div class='row'> 
                 <div class="form-group col-md-6 row">
                     <label class='col-md-3 col-form-label' for="postcode">{{ trans('cruds.order.fields.postcode') }}</label>
-                    <input class="form-control col-md-9 {{ $errors->has('postcode') ? 'is-invalid' : '' }}" type="text" name="postcode" id="postcode" value="{{ old('postcode', '') }}">
+                    <input class="form-control col-md-9 {{ $errors->has('postcode') ? 'is-invalid' : '' }}" type="text" name="postcode" id="postcode" value="{{ old('postcode', $order->postcode) }}">
                     @if($errors->has('postcode'))
                         <div class="invalid-feedback">
                             {{ $errors->first('postcode') }}
@@ -73,7 +72,7 @@
                 </div>
                 <div class="form-group col-md-6 row">
                     <label class="required col-md-3 col-form-label" for="contact">{{ trans('cruds.order.fields.contact') }}</label>
-                    <input class="form-control col-md-9 {{ $errors->has('contact') ? 'is-invalid' : '' }}" type="text" name="contact" id="contact" value="{{ old('contact', '') }}" required>
+                    <input class="form-control col-md-9 {{ $errors->has('contact') ? 'is-invalid' : '' }}" type="text" name="contact" id="contact" value="{{ old('contact', $order->contact) }}" required>
                     @if($errors->has('contact'))
                         <div class="invalid-feedback">
                             {{ $errors->first('contact') }}
@@ -82,7 +81,7 @@
                     <span class="help-block">{{ trans('cruds.order.fields.contact_helper') }}</span>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label for="file">{{ trans('cruds.order.fields.file') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('file') ? 'is-invalid' : '' }}" id="file-dropzone">
@@ -97,7 +96,7 @@
             <div class="form-group">
                 <div class="form-check {{ $errors->has('meeting') ? 'is-invalid' : '' }}">
                     <input type="hidden" name="meeting" value="0">
-                    <input class="form-check-input" type="checkbox" name="meeting" id="meeting" value="1" {{ old('meeting', 0) == 1 ? 'checked' : '' }}>
+                    <input class="form-check-input" type="checkbox" name="meeting" id="meeting" value="1" {{ $order->meeting || old('meeting', 0) === 1 ? 'checked' : '' }}>
                     <label class="form-check-label" for="meeting">{{ trans('cruds.order.fields.meeting') }}</label>
                 </div>
                 @if($errors->has('meeting'))
@@ -107,10 +106,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.order.fields.meeting_helper') }}</span>
             </div>
-
-            <div class="form-group text-center">
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
-                    Place Order
+                    {{ trans('global.save') }}
                 </button>
             </div>
         </form>

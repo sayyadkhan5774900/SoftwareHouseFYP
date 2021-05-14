@@ -66,11 +66,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('service-providers', 'ServiceProvidersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // My Orders
-    Route::resource('my-orders', 'MyOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::delete('my-orders/destroy', 'MyOrdersController@massDestroy')->name('my-orders.massDestroy');
+    Route::post('my-orders/media', 'MyOrdersController@storeMedia')->name('my-orders.storeMedia');
+    Route::post('my-orders/ckmedia', 'MyOrdersController@storeCKEditorImages')->name('my-orders.storeCKEditorImages');
+    Route::resource('my-orders', 'MyOrdersController', ['except' => ['create']]);
 
     // Clients
     Route::resource('clients', 'ClientsController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 });
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
