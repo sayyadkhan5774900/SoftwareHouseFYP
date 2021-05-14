@@ -24,9 +24,6 @@
                             {{ trans('cruds.order.fields.service_provider') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.email') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.order.fields.status') }}
                         </th>
                         <th>
@@ -49,9 +46,6 @@
                             </td>
                             <td>
                                 {{ $order->service_provider->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $order->service_provider->email ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Order::STATUS_SELECT[$order->status] ?? '' }}
