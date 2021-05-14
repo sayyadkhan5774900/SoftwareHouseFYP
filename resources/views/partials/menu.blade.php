@@ -196,16 +196,30 @@
                 </a>
             </li>
         @endcan
-        @can('client_access')
+        @can('active_service_access')
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.clients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/clients") || request()->is("admin/clients/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-user-friends c-sidebar-nav-icon">
+                <a href="{{ route("admin.active-services.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/active-services") || request()->is("admin/active-services/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fab fa-servicestack c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.client.title') }}
+                    {{ trans('cruds.activeService.title') }}
                 </a>
             </li>
         @endcan
+
+        @can('client_access')
+        <li class="c-sidebar-nav-item">
+            <a href="{{ route("admin.clients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/clients") || request()->is("admin/clients/*") ? "c-active" : "" }}">
+                <i class="fa-fw fas fa-user-friends c-sidebar-nav-icon">
+
+                </i>
+                {{ trans('cruds.client.title') }}
+            </a>
+        </li>
+        @endcan
+
+        <li class="c-sidebar-nav-title">Settings</li>
+
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">
