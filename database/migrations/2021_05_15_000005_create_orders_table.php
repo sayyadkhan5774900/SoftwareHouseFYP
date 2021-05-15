@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->string('postcode')->nullable();
             $table->string('contact');
             $table->boolean('meeting')->default(0)->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default('pending')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

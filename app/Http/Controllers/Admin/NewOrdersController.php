@@ -14,7 +14,7 @@ class NewOrdersController extends Controller
     {
         abort_if(Gate::denies('new_order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $orders = Order::whereNull('service_provider_id')->with(['client', 'media'])->get();
+        $orders = Order::whereNull('service_provider_id')->where('status','pending')->with(['client', 'media'])->get();
 
         return view('admin.newOrders.index', compact('orders') );
     }

@@ -1,13 +1,3 @@
-@can('service_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.services.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.service.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
-
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.service.title_singular') }} {{ trans('global.list') }}
@@ -48,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($services as $key => $service)
+                    @foreach($user->providerServices as $key => $service)
                         <tr data-entry-id="{{ $service->id }}">
                             <td>
 
