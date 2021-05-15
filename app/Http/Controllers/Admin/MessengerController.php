@@ -32,7 +32,27 @@ class MessengerController extends Controller
     public function createTopic()
     {
         $users = User::all()
-            ->except(Auth::id());
+        ->except(Auth::id());
+
+        $roles = auth()->user()->roles;
+
+        if($roles[0]->title == 'Admin'){
+            $users = User::with('roles')->whereHas('roles', function($query) {
+                $query->where('title', '!=' ,'Supper Admin') && $query->where('title', '!=' ,'Admin');
+            })->get();
+        } 
+
+        if($roles[0]->title == 'Provider'){
+            $users = User::with('roles')->whereHas('roles', function($query) {
+                $query->where('title','Admin');
+            })->get();
+        } 
+
+        if($roles[0]->title == 'Client'){
+            $users = User::with('roles')->whereHas('roles', function($query) {
+                $query->where('title','Admin');
+            })->get();
+        } 
 
         $unreads = $this->unreadTopics();
 

@@ -192,16 +192,19 @@
                 </a>
             </li>
         @endcan
-        @can('active_service_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.active-services.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/active-services") || request()->is("admin/active-services/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fab fa-servicestack c-sidebar-nav-icon">
+        @can('client_access')
+        <li class="c-sidebar-nav-item">
+            <a href="{{ route("admin.clients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/clients") || request()->is("admin/clients/*") ? "c-active" : "" }}">
+                <i class="fa-fw fas fa-user-friends c-sidebar-nav-icon">
 
-                    </i>
-                    {{ trans('cruds.activeService.title') }}
-                </a>
-            </li>
+                </i>
+                {{ trans('cruds.client.title') }}
+            </a>
+        </li>
         @endcan
+
+        <li class="c-sidebar-nav-title">Messages</li>
+
         @php($unread = \App\Models\QaTopic::unreadCount())
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.messenger.index") }}" class="{{ request()->is("admin/messenger") || request()->is("admin/messenger/*") ? "c-active" : "" }} c-sidebar-nav-link">
@@ -214,36 +217,29 @@
                     @endif
                 </a>
             </li>
-        @can('client_access')
+       
+
+
+        <li class="c-sidebar-nav-title">Settings</li>
+
+        @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
+            @can('profile_password_edit')
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
+                        <i class="fa-fw fas fa-key c-sidebar-nav-icon">
+                        </i>
+                        {{ trans('global.change_password') }}
+                    </a>
+                </li>
+            @endcan
+        @endif
         <li class="c-sidebar-nav-item">
-            <a href="{{ route("admin.clients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/clients") || request()->is("admin/clients/*") ? "c-active" : "" }}">
-                <i class="fa-fw fas fa-user-friends c-sidebar-nav-icon">
+            <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
 
                 </i>
-                {{ trans('cruds.client.title') }}
+                {{ trans('global.logout') }}
             </a>
         </li>
-        @endcan
-
-            @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
-                @can('profile_password_edit')
-                    <li class="c-sidebar-nav-item">
-                        <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
-                            <i class="fa-fw fas fa-key c-sidebar-nav-icon">
-                            </i>
-                            {{ trans('global.change_password') }}
-                        </a>
-                    </li>
-                @endcan
-            @endif
-            <li class="c-sidebar-nav-item">
-                <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                    <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
-
-                    </i>
-                    {{ trans('global.logout') }}
-                </a>
-            </li>
     </ul>
-
 </div>
