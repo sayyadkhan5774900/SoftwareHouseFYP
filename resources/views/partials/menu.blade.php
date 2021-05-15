@@ -58,9 +58,9 @@
             </li>
         @endcan
 
-        <li class="c-sidebar-nav-title">Orders</li>
-
+        
         @can('order_access')
+        <li class="c-sidebar-nav-title">Orders</li>
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/orders") || request()->is("admin/orders/*") ? "c-active" : "" }}">
                     <i class="fa-fw fab fa-first-order c-sidebar-nav-icon">

@@ -23,6 +23,39 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     @yield('styles')
+
+
+    @php $roles = auth()->user()->roles @endphp
+
+    <style>
+      @if ($roles[0]->title == 'Provider')
+        #sidebar{
+          background: rgb(224, 135, 1) !important; 
+        }
+        
+        .c-sidebar-nav-item:hover{
+          background: rgb(177, 101, 1) !important; 
+        }
+      
+        .c-sidebar-nav-link:hover{
+          background: rgb(177, 101, 1) !important; 
+        }
+      @endif
+      @if ($roles[0]->title == 'Client')
+        #sidebar{
+          background: rgb(1, 90, 224) !important; 
+        }
+        
+        .c-sidebar-nav-item:hover{
+          background: rgb(0, 54, 136) !important; 
+        }
+      
+        .c-sidebar-nav-link:hover{
+          background: rgb(0, 54, 136) !important; 
+        }
+      @endif
+    </style>
+
 </head>
 
 <body class="c-app">
