@@ -9,6 +9,8 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ChangePasswordController extends Controller
 {
     public function edit()
@@ -36,7 +38,14 @@ class ChangePasswordController extends Controller
 
     public function destroy()
     {
+
+        
         $user = auth()->user();
+
+        
+        if(!isEmpty($user->clientActiveOrders) || !isEmpty($user->clientActiveOrders)){
+            return back()->withErrors(['Can Not Delete Account', 'You can not DELETE account if you have any active order']);
+        }
 
         $user->update([
             'email' => time() . '_' . $user->email,

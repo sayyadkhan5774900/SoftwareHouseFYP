@@ -32,13 +32,13 @@
                         </a>
                     </div>
                     <div class="col-lg-2 text-right">{{ $topic->created_at->diffForHumans() }}</div>
-                    <div class="col-lg-1 text-center">
+                    {{-- <div class="col-lg-1 text-center">
                         <form action="{{ route('admin.messenger.destroyTopic', [$topic->id]) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');">
                             <input type="hidden" name="_method" value="DELETE">
                             @csrf
                             <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                         </form>
-                    </div>
+                    </div> --}}
                 </div>
                 @empty
                 <div class="row list-group-item">

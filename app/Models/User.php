@@ -130,4 +130,14 @@ class User extends Authenticatable
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    protected function providerActiveOrders()
+    {
+        return $this->hasMany(Order::class, 'service_provider_id');
+    }
+
+    protected function clientActiveOrders()
+    {
+        return $this->hasMany(Order::class, 'client_id');
+    }
 }

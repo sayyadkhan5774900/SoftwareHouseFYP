@@ -24,7 +24,7 @@ class MyServicesController extends Controller
     {
         abort_if(Gate::denies('my_service_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = Service::where('provider_id',auth()->user()->id)->with(['media'])->get();
+        $services = Service::where('provider_id',auth()->user()->id)->with(['media'])->paginate(10);
 
         return view('admin.myServices.index', compact('services'));
     }

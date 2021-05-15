@@ -90,6 +90,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="float-right">{{ $orders->links() }}</div>
         </div>
     </div>
 </div>
