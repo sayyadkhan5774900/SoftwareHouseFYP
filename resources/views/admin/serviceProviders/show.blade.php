@@ -89,7 +89,7 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="provider_services">
-            @includeIf('admin.users.relationships.providerServices', ['user' => $user])
+            @includeIf('admin.users.relationships.providerServices', ['services' => $user->providerServices])
         </div>
     </div>
 </div>

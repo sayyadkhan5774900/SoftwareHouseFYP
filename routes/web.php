@@ -36,7 +36,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('services/destroy', 'ServiceController@massDestroy')->name('services.massDestroy');
     Route::post('services/media', 'ServiceController@storeMedia')->name('services.storeMedia');
     Route::post('services/ckmedia', 'ServiceController@storeCKEditorImages')->name('services.storeCKEditorImages');
-    Route::resource('services', 'ServiceController');
+    Route::resource('services', 'ServiceController',['except' => ['create', 'store']]);
 
     // Services Dropdown
     Route::resource('services-dropdowns', 'ServicesDropdownController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
@@ -63,7 +63,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('active-orders', 'ActiveOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Service Providers
-    Route::resource('service-providers', 'ServiceProvidersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::resource('service-providers', 'ServiceProvidersController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
     // My Orders
     Route::delete('my-orders/destroy', 'MyOrdersController@massDestroy')->name('my-orders.massDestroy');

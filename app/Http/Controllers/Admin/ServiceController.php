@@ -27,37 +27,13 @@ class ServiceController extends Controller
         return view('admin.services.index', compact('services'));
     }
 
-    public function create()
-    {
-        abort_if(Gate::denies('service_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return view('admin.services.create');
-    }
-
-    public function store(StoreServiceRequest $request)
-    {
-        $service = Service::create($request->all());
-
-        if ($request->input('file', false)) {
-            $service->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
-        }
-
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $service->id]);
-        }
-
-        return redirect()->route('admin.services.index');
-    }
-
     public function edit(Service $service)
     {
         abort_if(Gate::denies('service_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $providers = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $service->load('provider');
-
-        return view('admin.services.edit', compact('providers', 'service'));
+        return view('admin.services.edit', compact('service'));
     }
 
     public function update(UpdateServiceRequest $request, Service $service)
