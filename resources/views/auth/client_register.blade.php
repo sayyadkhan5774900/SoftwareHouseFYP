@@ -11,9 +11,9 @@
                     {{ csrf_field() }}
 
                     <h1>{{ trans('panel.site_title') }}</h1>
-                    <p class="text-muted">{{ trans('global.register') }}</p>
+                    <p class="text-muted">{{ trans('global.register') }}&nbsp;Client</p>
 
-                    <input type="hidden" name="{{ $role }}">
+                    <input type="hidden" name="Client">
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

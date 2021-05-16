@@ -68,8 +68,17 @@
                                     {{ trans('global.forgot_password') }}
                                 </a><br>
                             @endif
-                            <a class="btn btn-link px-0" href="{{ route('register') }}">
-                                {{ trans('global.register') }}
+                        </div>
+                    </div>
+                    <div class="mt-3 d-flex justify-content-between">
+                        <div>
+                            <a class="btn btn-link px-0" href="{{ route('register.client') }}">
+                                {{ trans('global.register') }} as a Client
+                            </a>
+                        </div>
+                        <div>
+                            <a class="btn btn-link px-0" href="{{ route('register.provider') }}">
+                                {{ trans('global.register') }} as a Provider
                             </a>
                         </div>
                     </div>
