@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use \DateTimeInterface;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -42,6 +43,7 @@ class Order extends Model implements HasMedia
     ];
 
     protected $dates = [
+        'deadline_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -58,6 +60,7 @@ class Order extends Model implements HasMedia
         'client_id',
         'service_provider_id',
         'status',
+        'deadline_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -82,6 +85,16 @@ class Order extends Model implements HasMedia
     public function service_provider()
     {
         return $this->belongsTo(User::class, 'service_provider_id');
+    }
+
+    public function getDeadlineDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setDeadlineDateAttribute($value)
+    {
+        $this->attributes['deadline_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     protected function serializeDate(DateTimeInterface $date)

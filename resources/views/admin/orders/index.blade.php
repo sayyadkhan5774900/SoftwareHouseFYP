@@ -47,6 +47,9 @@
                             {{ trans('cruds.order.fields.status') }}
                         </th>
                         <th>
+                            {{ trans('cruds.order.fields.deadline_date') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -81,6 +84,9 @@
                             </td>
                             <td>
                                 {{ App\Models\Order::STATUS_SELECT[$order->status] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $order->deadline_date ?? '' }}
                             </td>
                             <td>
                                 @can('order_show')

@@ -39,6 +39,10 @@ class UpdateOrderRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'deadline_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
         ];
     }
 }

@@ -105,6 +105,8 @@ return [
             'service_provider_helper' => ' ',
             'status'                  => 'Status',
             'status_helper'           => ' ',
+            'deadline_date'           => 'Deadline Date',
+            'deadline_date_helper'    => ' ',
         ],
     ],
     'service' => [

@@ -129,6 +129,16 @@
                 <span class="help-block">{{ trans('cruds.order.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="deadline_date">{{ trans('cruds.order.fields.deadline_date') }}</label>
+                <input class="form-control date {{ $errors->has('deadline_date') ? 'is-invalid' : '' }}" type="text" name="deadline_date" id="deadline_date" value="{{ old('deadline_date', $order->deadline_date) }}">
+                @if($errors->has('deadline_date'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('deadline_date') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.order.fields.deadline_date_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
