@@ -44,6 +44,10 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <a href="{{ route("admin.add-new-orders.create") }}" class="mt-5 btn btn-primary btn-lg  btn-block">Order Now Get Quotaion</a>
+        </div>
+        </div>
 
      
     </section>
@@ -61,43 +65,9 @@
     </section>
     <!--=================================
     Related products -->
-    <section class="space-pb">
-      <div class="container">
-          <div class="row">
-            <div  class="col-md-12">
-              <div class="form-dark contact-form">
-              
-                 <form class="mt-4">
-                  <div class="form-row">
-                    <div class="form-group col-6">
-                      <input type="text" class="form-control" id="Username" placeholder="First Name">
-                    </div>
-                    <div class="form-group col-6">
-                      <input type="text" class="form-control" id="lastname" placeholder="Last Name">
-                    </div>
-                    <div class="form-group col-12">
-                      <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group col-12">
-                      <input type="text" class="form-control" id="phone" placeholder="Website">
-                    </div>
-                    <div class="form-group col-12">
-                      <input type="text" class="form-control" id="subject" placeholder="Subject">
-                    </div>
-                    <div class="form-group col-12 mb-0">
-                      <textarea rows="4" class="form-control" id="sector" placeholder="Message"></textarea>
-                    </div>
-                    <div class="col-12 mt-4">
-                      <a class="btn btn-primary btn-block" href="#">Submit</a>
-                    </div>
-                  </div>
-                </form>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  
+    @include('partials.contact_us')
+
     <!--=================================
     Related products -->
 

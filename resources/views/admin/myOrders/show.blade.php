@@ -115,6 +115,14 @@
                             {{ App\Models\Order::STATUS_SELECT[$order->status] ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.order.fields.deadline_date') }}
+                        </th>
+                        <td>
+                            {{ $order->deadline_date }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
