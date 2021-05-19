@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('contact');
             $table->boolean('meeting')->default(0)->nullable();
             $table->string('status')->nullable();
+            $table->date('deadline_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
