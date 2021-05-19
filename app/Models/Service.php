@@ -17,11 +17,11 @@ class Service extends Model implements HasMedia
     use HasFactory;
 
     public const SERVICE_SELECT = [
-        'graphic_designing'      => 'Graphic Designing',
-        'website_development'    => 'Website Development',
-        'product_photography'    => 'Product Photography',
-        'event_management'       => 'Event Management',
-        'social_media_marketing' => 'Social Media Marketing',
+        'graphic-designing'      => 'Graphic Designing',
+        'website-development'    => 'Website Development',
+        'product-photography'    => 'Product Photography',
+        'event-management'       => 'Event Management',
+        'social-media-marketing' => 'Social Media Marketing',
     ];
 
     public $table = 'services';

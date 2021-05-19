@@ -1,6 +1,71 @@
 <?php
+use Illuminate\Http\Request;
 
-Route::redirect('/', '/login');
+
+// Route::redirect('/', '/login');
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/website-development', function () {
+    return view('website-development');
+});
+
+Route::get('/product-photography', function () {
+    return view('product-photography');
+});
+
+Route::get('/graphic-designing', function () {
+    return view('graphic-designing');
+});
+
+Route::get('/event-management', function () {
+    return view('event-management');
+});
+
+Route::get('/social-media-marketing', function () {
+    return view('social-media');
+});
+
+Route::get('/case-studies', function () {
+    return view('case-studies');
+});
+
+Route::get('/contact-us', function () {
+    return view('contact-us');
+});
+
+
+Route::post('/contact-us', function (Request $request) {
+    
+
+    $request->validate([
+        'email' => 'email|required',
+        'message' => 'required'
+    ]);
+
+    \Mail::send('contact_email',
+    array(
+        'name' => $request->get('first_name').' '.$request->get('last_name'),
+        'email' => $request->get('email'),
+        'subject' => $request->get('subject'),
+        'phone_number' => $request->get('phone'),
+        'website' => $request->get('website'),
+        'user_message' => $request->get('message'),
+    ), function($message) use ($request)
+      {
+         $message->from($request->email);
+         $message->to('codingdriver15@gmail.com');
+      });
+    // dd($request['email']);
+
+    return back()->with('message', 'Thank you for contact us!');
+
+
+})->name('contact-us');
+
+
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));

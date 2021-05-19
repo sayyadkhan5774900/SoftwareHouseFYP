@@ -84,7 +84,7 @@
                 </tbody>
             </table>
             <div class="float-right">
-                {{ $orders->links() }}
+                {{ $services->links() }}
             </div>
         </div>
     </div>

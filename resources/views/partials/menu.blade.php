@@ -107,7 +107,7 @@
                 </a>
                  <ul class="c-sidebar-nav-dropdown-items">
                     @foreach(App\Models\Service::SERVICE_SELECT as $key => $label)
-                        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="admin/services-dropdowns/{{$key}}"><span class="c-sidebar-nav-icon"></span>{{ $label}}</a></li>
+                        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/{{$key}}"><span class="c-sidebar-nav-icon"></span>{{ $label}}</a></li>
                     @endforeach
                 </ul>
             </li>

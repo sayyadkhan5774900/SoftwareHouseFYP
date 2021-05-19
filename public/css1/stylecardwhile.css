@@ -1,0 +1,1268 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+.while h1{
+	color: white;
+font-family: 'Pacifico', cursive;
+}
+.main-section{
+	height: 177vh;
+	width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 95%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 21px;
+    background-color: #7F7F7F;
+}
+.firstrow{
+	font-size: 15px;
+}
+
+.form2{
+	border-radius: 23px;
+	height: 150px;
+    background-color: #FEEEEF;
+}
+.form3{
+	height: 200px;
+	border-radius: 23px;
+	margin-top: -27px;
+    background-color: #DCF2FF;
+}
+.form4{
+    position: absolute;
+    width: 150%;
+    top: -52%;
+    left: -56%;
+    height: 109%;
+    background-color: #E8D1FF;
+}
+.form5{
+	border-radius: 23px;
+	padding-top: 10px;
+	height: 27vh;
+    background-color: #DDFFEE;
+}
+.form6{
+	border-radius: 23px;
+    background-color: #DDFFEE;
+}
+.r1{
+	padding-right: 80px;
+}
+.form_big_circle{
+	    height: 410px;
+    width: 100%;
+    background-color: #FEFFD5;
+}
+
+.second_last_form{
+	border-radius: 23px;
+    margin-top: 17px;
+    height: 31vh;
+    background-color: #FECCFF;
+}
+.blackform{
+	width: 52%;
+    position: absolute;
+    top: -17vh;
+    left: 144%;
+    padding: 15px;
+    border-radius: 23px;
+    background-color: #FEDBB4;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 10px;
+    background-color: #DCFEFD;
+}
+.went{
+
+	padding-top: 10px;
+
+}
+.was1{
+	padding-top: 10px;
+}
+
+
+@media only screen and (min-width: 500px) and (max-width: 575px){
+
+.main-section{
+	height: 140vh;
+	width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 95%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 11px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 107%;
+}
+.form1{
+	width: 64vh;
+    font-size: 10px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 123px;
+    margin-left: 9px;
+}
+.form2 h4{
+	font-size: 14px;
+}
+.form3 {
+    height: 146px;
+    border-radius: 23px;
+    margin-top: -25px;
+}
+.form3 h4{
+	font-size: 14px;
+}
+.form4 {
+    position: absolute;
+    width: 171%;
+    top: -52%;
+    left: -56%;
+    height: 109%;
+}
+.form4 h4{
+	font-size: 14px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 22vh;
+    margin-top: -14px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 14px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 9px;
+}
+.form6 h4{
+	font-size: 14px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 9px;
+}
+.form_big_circle {
+    height: 280px;
+    width: 109%;
+}
+.form_big_circle h4{
+	font-size: 12px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 3px;
+    height: 21vh;
+}
+
+.blackform {
+    font-size: 12px;
+    width: 80%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 12px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 4px;
+}
+.went{
+
+	padding-top: 10px;
+
+}
+.went h4{
+	font-size: 12px;
+	margin-bottom: -4px;
+}
+.last_form label{
+	    font-size: 9px;
+    line-height: 0;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 14px;
+}
+
+}
+
+
+
+
+
+@media only screen and (min-width: 576px) and (max-width: 767px){
+
+.main-section{
+	height: 146vh;
+	width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 95%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 11px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 107%;
+}
+.form1{
+	width: 64vh;
+    font-size: 11px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 128px;
+    margin-left: 9px;
+}
+.form2 h4{
+	font-size: 16px;
+}
+.form3 {
+    height: 153px;
+    border-radius: 23px;
+    margin-top: -25px;
+}
+.form3 h4{
+	font-size: 16px;
+}
+.form4 {
+    position: absolute;
+    width: 171%;
+    top: -52%;
+    left: -65%;
+    height: 115%;
+}
+.form4 h4{
+	font-size: 16px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 23vh;
+    margin-top: -14px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 16px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 10px;
+}
+.form6 h4{
+	font-size: 16px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 9px;
+}
+.form_big_circle {
+    height: 298px;
+    width: 109%;
+}
+.form_big_circle h4{
+	font-size: 16px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 3px;
+    height: 23vh;
+}
+
+.blackform {
+    font-size: 12px;
+    width: 80%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 16px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 11px;
+}
+.went{
+
+	padding-top: 10px;
+
+}
+.went h4{
+	font-size: 16px;
+	margin-bottom: -4px;
+}
+.last_form label{
+	    font-size: 9px;
+    line-height: 0;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 16px;
+}
+
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+
+.main-section{
+	height: 170vh;
+	width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 96%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 11px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 104%;
+}
+.form1{
+	width: 50vh;
+    font-size: 15px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 160px;
+    margin-left: 9px;
+}
+.form2 h4{
+	font-size: 16px;
+}
+.form3 {
+    height: 170px;
+    border-radius: 23px;
+    margin-top: -19px;
+}
+.form3 h4{
+	font-size: 16px;
+}
+.form4 {
+    position: absolute;
+    width: 171%;
+    top: -52%;
+    left: -65%;
+    height: 130%;
+}
+.form4 h4{
+	font-size: 16px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 165px;
+    margin-top: -11px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 16px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 14px;
+}
+.form6 h4{
+	font-size: 16px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 14px;
+}
+.form_big_circle {
+    height: 369px;
+    width: 100%;
+}
+.form_big_circle h4{
+	font-size: 16px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 11px;
+    height: 28vh;
+}
+
+.blackform {
+    font-size: 12px;
+    width: 74%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 16px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 13px;
+	height: 29vh;
+}
+.went{
+
+	padding-top: 10px;
+
+}
+.went h4{
+	font-size: 16px;
+	margin-bottom: -4px;
+}
+.last_form label{
+	    font-size: 14px;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 16px;
+}
+
+}
+
+
+
+
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+
+.main-section{
+	height: 170vh;
+	width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 96%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 11px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 104%;
+}
+.form1{
+	width: 50vh;
+    font-size: 15px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 160px;
+    margin-left: 9px;
+}
+.form2 h4{
+	font-size: 16px;
+}
+.form3 {
+    height: 170px;
+    border-radius: 23px;
+    margin-top: -19px;
+}
+.form3 h4{
+	font-size: 16px;
+}
+.form4 {
+    position: absolute;
+    width: 171%;
+    top: -52%;
+    left: -65%;
+    height: 130%;
+}
+.form4 h4{
+	font-size: 16px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 165px;
+    margin-top: -11px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 16px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 14px;
+}
+.form6 h4{
+	font-size: 16px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 14px;
+}
+.form_big_circle {
+    height: 369px;
+    width: 100%;
+}
+.form_big_circle h4{
+	font-size: 16px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 11px;
+    height: 28vh;
+}
+
+.blackform {
+    font-size: 12px;
+    width: 74%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 16px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 13px;
+	height: 29vh;
+}
+.went{
+
+	padding-top: 10px;
+
+}
+.went h4{
+	font-size: 16px;
+	margin-bottom: -4px;
+}
+.last_form label{
+	    font-size: 14px;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 16px;
+}
+
+}
+
+
+
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1300px){
+
+.main-section{
+	height: 170vh;
+	width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 96%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 11px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 104%;
+}
+.form1{
+	width: 50vh;
+    font-size: 15px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 160px;
+    margin-left: 9px;
+}
+.form2 h4{
+	font-size: 16px;
+}
+.form3 {
+    height: 170px;
+    border-radius: 23px;
+    margin-top: -19px;
+}
+.form3 h4{
+	font-size: 16px;
+}
+.form4 {
+    position: absolute;
+    width: 171%;
+    top: -52%;
+    left: -65%;
+    height: 130%;
+}
+.form4 h4{
+	font-size: 16px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 165px;
+    margin-top: -11px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 16px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 14px;
+}
+.form6 h4{
+	font-size: 16px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 14px;
+}
+.form_big_circle {
+    height: 369px;
+    width: 100%;
+}
+.form_big_circle h4{
+	font-size: 16px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 11px;
+    height: 28vh;
+}
+
+.blackform {
+    font-size: 12px;
+    width: 74%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 16px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 13px;
+	height: 29vh;
+}
+.went{
+
+	padding-top: 10px;
+
+}
+.went h4{
+	font-size: 16px;
+	margin-bottom: -4px;
+}
+.last_form label{
+	    font-size: 14px;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 16px;
+}
+
+}
+
+
+
+
+
+@media only screen and (min-width: 1301px) and (max-width: 1350px){
+
+.main-section{
+	height: 170vh;
+	width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 96%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 11px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 104%;
+}
+.form1{
+	width: 50vh;
+    font-size: 15px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 160px;
+    margin-left: 9px;
+}
+.form2 h4{
+	font-size: 16px;
+}
+.form3 {
+    height: 170px;
+    border-radius: 23px;
+    margin-top: -19px;
+}
+.form3 h4{
+	font-size: 16px;
+}
+.form4 {
+    position: absolute;
+    width: 171%;
+    top: -52%;
+    left: -65%;
+    height: 130%;
+}
+.form4 h4{
+	font-size: 16px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 165px;
+    margin-top: -11px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 16px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 14px;
+}
+.form6 h4{
+	font-size: 16px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 14px;
+}
+.form_big_circle {
+    height: 369px;
+    width: 100%;
+}
+.form_big_circle h4{
+	font-size: 16px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 11px;
+    height: 28vh;
+}
+
+.blackform {
+    font-size: 12px;
+    width: 74%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 16px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 13px;
+	height: 29vh;
+}
+.went{
+
+	padding-top: 10px;
+
+}
+.went h4{
+	font-size: 16px;
+	margin-bottom: -4px;
+}
+.last_form label{
+	    font-size: 14px;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 16px;
+}
+
+}
+
+
+
+
+
+
+/*for mobile*/
+
+
+@media only screen and (min-width: 320px) and (max-width: 374px){
+
+.main-section{
+	height: 162vh;
+	width: 140%;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 96%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 9px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 109%;
+}
+.second_row{
+	width: 109%;
+}
+.third_row{
+	width: 109%;
+}
+.form1 {
+    width: 37vh;
+    font-size: 11px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 125px;
+    margin-left: 37px;
+}
+.form2 h4{
+	font-size: 13px;
+}
+.form3 {
+    height: 150px;
+    border-radius: 23px;
+    margin-top: -19px;
+}
+.form3 h4{
+	font-size: 13px;
+}
+.form4 {
+    position: absolute;
+    width: 171%;
+    top: -48%;
+    left: -55%;
+    height: 109%;
+}
+.form4 h4{
+	font-size: 13px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 146px;
+    margin-top: -11px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 13px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 8px;
+}
+.form6 h4{
+	font-size: 13px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 13px;
+}
+.form_big_circle {
+    height: 308px;
+    width: 114%;
+    margin-left: -8px;
+}
+.form_big_circle h4{
+	font-size: 16px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 2px;
+    height: 26vh;
+    width: 105%;
+}
+.blackform {
+    font-size: 12px;
+    width: 74%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 16px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 13px;
+	height: 30vh;
+}
+.last_row{
+	width: 126%;
+    margin-top: -7px;
+}
+.went h4{
+	font-size: 16px;
+	margin-bottom: -4px;
+}
+.went{
+	padding-top: 0px;
+}
+.last_form label{
+	    font-size: 10px;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 16px;
+}
+
+}
+
+
+
+@media only screen and (min-width: 375px) and (max-width: 424px){
+
+.main-section{
+	height: 162vh;
+	width: 140%;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 96%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 9px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 107%;
+}
+.second_row{
+	width: 107%;
+}
+.third_row{
+	width: 107%;
+}
+.form1 {
+    width: 37vh;
+    font-size: 11px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 125px;
+    margin-left: 37px;
+}
+.form2 h4{
+	font-size: 16px;
+}
+.form3 {
+    height: 150px;
+    border-radius: 23px;
+    margin-top: -19px;
+}
+.form3 h4{
+	font-size: 16px;
+}
+.form4 {
+    position: absolute;
+    width: 171%;
+    top: -48%;
+    left: -55%;
+    height: 109%;
+}
+.form4 h4{
+	font-size: 16px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 146px;
+    margin-top: -11px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 16px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 10px;
+}
+.form6 h4{
+	font-size: 16px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 13px;
+}
+.form_big_circle {
+    height: 308px;
+    width: 114%;
+    margin-left: -8px;
+}
+.form_big_circle h4{
+	font-size: 16px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 2px;
+    height: 26vh;
+    width: 103%;
+}
+.blackform {
+    font-size: 12px;
+    width: 74%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 16px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 13px;
+	height: 30vh;
+}
+.last_row{
+	width: 119%;
+    margin-top: -7px;
+}
+.went h4{
+	font-size: 16px;
+	margin-bottom: -4px;
+}
+.went{
+	padding-top: 0px;
+}
+.last_form label{
+	    font-size: 11px;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 16px;
+}
+
+}
+
+
+
+@media only screen and (min-width: 425px) and (max-width: 499px){
+
+.main-section{
+	height: 163vh;
+	width: 140%;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: #e5e3e3;
+    border-radius: 24px;
+}
+.while {
+    width: 96%;
+    height: 11vh;
+    padding: 8px;
+    margin-left: 9px;
+}
+.firstrow{
+	font-size: 15px;
+	width: 105%;
+}
+.second_row{
+	width: 105%;
+}
+.third_row{
+	width: 105%;
+}
+.form1 {
+    width: 45vh;
+    font-size: 12px;
+}
+.form2 {
+    border-radius: 23px;
+    height: 125px;
+    margin-left: 12px;
+}
+.form2 h4{
+	font-size: 16px;
+}
+.form3 {
+    height: 150px;
+    border-radius: 23px;
+    margin-top: -19px;
+}
+.form3 h4{
+	font-size: 16px;
+}
+.form4 {
+    position: absolute;
+    width: 161%;
+    top: -48%;
+    left: -55%;
+    height: 109%;
+}
+.form4 h4{
+	font-size: 16px;
+}
+.form5 {
+    border-radius: 23px;
+    padding-top: 10px;
+    height: 146px;
+    margin-top: -11px;
+    font-size: 12px;
+}
+.form5 h4{
+	font-size: 16px;
+}
+.form6 {
+    border-radius: 23px;
+    font-size: 12px;
+}
+.form6 h4{
+	font-size: 16px;
+}
+.r1 {
+    padding-right: 36px;
+}
+.table-content{
+	font-size: 13px;
+}
+.form_big_circle {
+    height: 308px;
+    width: 105%;
+    margin-left: -8px;
+}
+.form_big_circle h4{
+	font-size: 16px;
+}
+.second_last_form {
+    border-radius: 23px;
+    margin-top: 2px;
+    height: 26vh;
+    width: 100%;
+}
+.blackform {
+    font-size: 12px;
+    width: 74%;
+    position: absolute;
+    top: -17vh;
+    left: 128%;
+    padding: 18px;
+    border-radius: 23px;
+}
+.blackform h5{
+	font-size: 16px;
+}
+.last_form{
+	border-radius: 23px;
+	margin-top: 13px;
+	height: 30vh;
+}
+.last_row{
+	width: 113%;
+    margin-top: -7px;
+}
+.went h4{
+	font-size: 16px;
+	margin-bottom: -4px;
+}
+.went{
+	    padding-top: 3px;
+    padding-bottom: 6px;
+}
+.last_form label{
+	    font-size: 12px;
+}
+.was1{
+	padding-top: 10px;
+}
+.was1 h4{
+	font-size: 16px;
+}
+
+}
