@@ -77,9 +77,12 @@
                         </th>
                         <td>
                             @if($service->file)
-                                <a href="{{ $service->file->getUrl() }}" target="_blank">
+                                {{-- <a href="{{ $service->file->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
-                                </a>
+                                </a> --}}
+                                <a href=" {{ route('service.file.download', $service->id) }}" target="_blank">
+                                    Download File
+                                </a>  
                             @endif
                         </td>
                     </tr>

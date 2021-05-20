@@ -22,7 +22,7 @@ class MyOrdersController extends Controller
     {
         abort_if(Gate::denies('my_order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $orders = Order::whereNull('service_provider_id')->with(['client', 'service_provider', 'media'])->paginate(1);
+        $orders = Order::whereNull('service_provider_id')->with(['client', 'service_provider', 'media'])->paginate(10);
 
         return view('admin.myOrders.index', compact('orders'));
     }

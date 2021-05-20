@@ -63,6 +63,8 @@ class OrderController extends Controller
 
         $service_providers = User::with('roles')->whereHas('roles', function($query) {
             $query->where('title','Provider');
+        })->with('services')->whereHas('services', function($query) use ($order) {
+            $query->where('service',$order->service);
         })->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $order->load('client', 'service_provider');

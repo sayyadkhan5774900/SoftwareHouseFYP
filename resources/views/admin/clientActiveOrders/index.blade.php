@@ -57,7 +57,7 @@
                                 {{ $order->deadline_date ?? '' }}
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-primary" href="{{ route('admin.client-active-orders.show', $order->id) }}">
+                                <a class="btn btn-xs btn-primary" href="{{ route('admin.active-orders.show', $order->id) }}">
                                     {{ trans('global.view') }}
                                 </a>
                             </td>

@@ -84,7 +84,7 @@
 
         @can('active_order_access')
         <li class="c-sidebar-nav-item">
-            <a href="{{ route("admin.active-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/active-orders") || request()->is("admin/active-orders/*") ? "c-active" : "" }}">
+            <a href="{{ route("admin.manager-active-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/manager-active-orders") || request()->is("admin/manager-active-orders/*") ? "c-active" : "" }}">
                 <i class="fa-fw fab fa-first-order-alt c-sidebar-nav-icon">
 
                 </i>
@@ -144,7 +144,7 @@
             <li class="c-sidebar-nav-title">Active Orders</li>
 
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.client-active-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/client-active-orders") || request()->is("admin/client-active-orders/*") ? "c-active" : "" }}">
+                <a href="{{ route("admin.active-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/active-orders") || request()->is("admin/active-orders/*") ? "c-active" : "" }}">
                     <i class="fa-fw fab fa-angular c-sidebar-nav-icon">
 
                     </i>

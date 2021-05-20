@@ -77,9 +77,12 @@
                         </th>
                         <td>
                             @if($order->file)
-                                <a href="{{ $order->file->getUrl() }}" target="_blank">
+                                {{-- <a href="{{ $order->file->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
-                                </a>
+                                </a> --}}
+                                <a href=" {{ route('order.file.download', $order->id) }}" target="_blank">
+                                    Download File
+                                </a>  
                             @endif
                         </td>
                     </tr>

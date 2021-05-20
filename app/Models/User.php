@@ -125,6 +125,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+    
+    public function services()
+    {
+        return $this->hasMany(Service::class,'provider_id');
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

@@ -44,6 +44,232 @@ class HomeController
             })
                 ->{$settings1['aggregate_function'] ?? 'count'}($settings1['aggregate_field'] ?? '*');
         }
+        
+
+        // Client Dashboard
+
+        $settings7 = [
+            'chart_title'           => 'Last Week Orders',
+            'chart_type'            => 'number_block',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Order',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_days'           => '7',
+            'group_by_field_format' => 'd/m/Y H:i:s',
+            'column_class'          => 'col-md-6',
+            'entries_number'        => '5',
+            'translation_key'       => 'order',
+        ];
+
+        $settings7['total_number'] = 0;
+        if (class_exists($settings7['model'])) {
+            $settings7['total_number'] = $settings7['model']::where('client_id', auth()->user()->id)->when(isset($settings7['filter_field']), function ($query) use ($settings7) {
+                if (isset($settings7['filter_days'])) {
+                    return $query->where($settings7['filter_field'], '>=',
+                now()->subDays($settings7['filter_days'])->format('Y-m-d'));
+                }
+                if (isset($settings7['filter_period'])) {
+                    switch ($settings7['filter_period']) {
+                case 'week': $start = date('Y-m-d', strtotime('last Monday')); break;
+                case 'month': $start = date('Y-m') . '-01'; break;
+                case 'year': $start = date('Y') . '-01-01'; break;
+            }
+                    if (isset($start)) {
+                        return $query->where($settings7['filter_field'], '>=', $start);
+                    }
+                }
+            })
+                ->{$settings7['aggregate_function'] ?? 'count'}($settings7['aggregate_field'] ?? '*');
+        }
+
+        $settings8 = [
+            'chart_title'           => 'Active Orders',
+            'chart_type'            => 'number_block',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Order',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_days'           => '7',
+            'group_by_field_format' => 'd/m/Y H:i:s',
+            'column_class'          => 'col-md-6',
+            'entries_number'        => '5',
+            'translation_key'       => 'order',
+        ];
+
+        $settings8['total_number'] = 0;
+        if (class_exists($settings8['model'])) {
+            $settings8['total_number'] = $settings8['model']::where('client_id', auth()->user()->id)->whereNotNull('service_provider_id')->when(isset($settings8['filter_field']), function ($query) use ($settings8) {
+                if (isset($settings8['filter_days'])) {
+                    return $query->where($settings8['filter_field'], '>=',
+                now()->subDays($settings8['filter_days'])->format('Y-m-d'));
+                }
+                if (isset($settings8['filter_period'])) {
+                    switch ($settings8['filter_period']) {
+                case 'week': $start = date('Y-m-d', strtotime('last Monday')); break;
+                case 'month': $start = date('Y-m') . '-01'; break;
+                case 'year': $start = date('Y') . '-01-01'; break;
+            }
+                    if (isset($start)) {
+                        return $query->where($settings8['filter_field'], '>=', $start);
+                    }
+                }
+            })
+                ->{$settings8['aggregate_function'] ?? 'count'}($settings8['aggregate_field'] ?? '*');
+        }
+
+        $settings9 = [
+            'chart_title'           => 'List of New Orders Last Week',
+            'chart_type'            => 'latest_entries',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Order',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_days'           => '7',
+            'group_by_field_format' => 'd/m/Y H:i:s',
+            'column_class'          => 'col-md-12',
+            'entries_number'        => '10',
+            'fields'                => [
+                'service' => '',
+                'city'    => '',
+                'contact' => '',
+                'client'  => 'name',
+                'status'  => '',
+            ],
+            'translation_key' => 'order',
+        ];
+
+        $settings9['data'] = [];
+        if (class_exists($settings9['model'])) {
+            $settings9['data'] = $settings9['model']::where('client_id', auth()->user()->id)->latest()
+                ->take($settings9['entries_number'])
+                ->get();
+        }
+
+        if (!array_key_exists('fields', $settings9)) {
+            $settings9['fields'] = [];
+        }
+
+        // Client Dashboard End
+
+
+        // Provider Dashboard
+
+                $settings10 = [
+                    'chart_title'           => 'Total Services',
+                    'chart_type'            => 'number_block',
+                    'report_type'           => 'group_by_date',
+                    'model'                 => 'App\Models\Service',
+                    'group_by_field'        => 'created_at',
+                    'group_by_period'       => 'day',
+                    'aggregate_function'    => 'count',
+                    'filter_field'          => 'created_at',
+                    'filter_days'           => '7',
+                    'group_by_field_format' => 'd/m/Y H:i:s',
+                    'column_class'          => 'col-md-6',
+                    'entries_number'        => '5',
+                    'translation_key'       => 'service',
+                ];
+        
+                $settings10['total_number'] = 0;
+                if (class_exists($settings10['model'])) {
+                    $settings10['total_number'] = $settings10['model']::where('provider_id', auth()->user()->id)->when(isset($settings10['filter_field']), function ($query) use ($settings10) {
+                        if (isset($settings10['filter_days'])) {
+                            return $query->where($settings10['filter_field'], '>=',
+                        now()->subDays($settings10['filter_days'])->format('Y-m-d'));
+                        }
+                        if (isset($settings10['filter_period'])) {
+                            switch ($settings10['filter_period']) {
+                        case 'week': $start = date('Y-m-d', strtotime('last Monday')); break;
+                        case 'month': $start = date('Y-m') . '-01'; break;
+                        case 'year': $start = date('Y') . '-01-01'; break;
+                    }
+                            if (isset($start)) {
+                                return $query->where($settings10['filter_field'], '>=', $start);
+                            }
+                        }
+                    })
+                        ->{$settings10['aggregate_function'] ?? 'count'}($settings10['aggregate_field'] ?? '*');
+                }
+        
+                $settings11 = [
+                    'chart_title'           => 'Active Orders',
+                    'chart_type'            => 'number_block',
+                    'report_type'           => 'group_by_date',
+                    'model'                 => 'App\Models\Order',
+                    'group_by_field'        => 'created_at',
+                    'group_by_period'       => 'day',
+                    'aggregate_function'    => 'count',
+                    'filter_field'          => 'created_at',
+                    'filter_days'           => '7',
+                    'group_by_field_format' => 'd/m/Y H:i:s',
+                    'column_class'          => 'col-md-6',
+                    'entries_number'        => '5',
+                    'translation_key'       => 'order',
+                ];
+        
+                $settings11['total_number'] = 0;
+                if (class_exists($settings11['model'])) {
+                    $settings11['total_number'] = $settings11['model']::where('service_provider_id', auth()->user()->id)->whereNotNull('client_id')->when(isset($settings11['filter_field']), function ($query) use ($settings11) {
+                        if (isset($settings11['filter_days'])) {
+                            return $query->where($settings11['filter_field'], '>=',
+                        now()->subDays($settings11['filter_days'])->format('Y-m-d'));
+                        }
+                        if (isset($settings11['filter_period'])) {
+                            switch ($settings11['filter_period']) {
+                        case 'week': $start = date('Y-m-d', strtotime('last Monday')); break;
+                        case 'month': $start = date('Y-m') . '-01'; break;
+                        case 'year': $start = date('Y') . '-01-01'; break;
+                    }
+                            if (isset($start)) {
+                                return $query->where($settings11['filter_field'], '>=', $start);
+                            }
+                        }
+                    })
+                        ->{$settings11['aggregate_function'] ?? 'count'}($settings11['aggregate_field'] ?? '*');
+                }
+        
+                $settings12 = [
+                    'chart_title'           => 'List of New Orders Last Week',
+                    'chart_type'            => 'latest_entries',
+                    'report_type'           => 'group_by_date',
+                    'model'                 => 'App\Models\Order',
+                    'group_by_field'        => 'created_at',
+                    'group_by_period'       => 'day',
+                    'aggregate_function'    => 'count',
+                    'filter_field'          => 'created_at',
+                    'filter_days'           => '7',
+                    'group_by_field_format' => 'd/m/Y H:i:s',
+                    'column_class'          => 'col-md-12',
+                    'entries_number'        => '10',
+                    'fields'                => [
+                        'service' => '',
+                        'client'  => 'name',
+                        'status'  => '',
+                    ],
+                    'translation_key' => 'order',
+                ];
+        
+                $settings12['data'] = [];
+                if (class_exists($settings12['model'])) {
+                    $settings12['data'] = $settings12['model']::where('service_provider_id', auth()->user()->id)->whereNotNull('client_id')->latest()
+                        ->take($settings12['entries_number'])
+                        ->get();
+                }
+        
+                if (!array_key_exists('fields', $settings12)) {
+                    $settings12['fields'] = [];
+                }
+        
+        // Provider Dashboard End
+        
+
 
         $settings2 = [
             'chart_title'           => 'Last  Week New Users',
@@ -135,7 +361,6 @@ class HomeController
                 'service' => '',
                 'city'    => '',
                 'contact' => '',
-                'file'    => '',
                 'client'  => 'name',
                 'status'  => '',
             ],
@@ -152,6 +377,7 @@ class HomeController
         if (!array_key_exists('fields', $settings5)) {
             $settings5['fields'] = [];
         }
+
 
         $settings6 = [
             'chart_title'           => 'List Of New Users Last Week',
@@ -185,6 +411,6 @@ class HomeController
             $settings6['fields'] = [];
         }
 
-        return view('home', compact('settings1', 'settings2', 'chart3', 'chart4', 'settings5', 'settings6'));
+        return view('home', compact('settings1', 'settings2', 'chart3', 'chart4', 'settings5', 'settings6', 'settings7', 'settings8', 'settings9', 'settings10', 'settings11', 'settings12' ));
     }
 }

@@ -33,7 +33,7 @@ class Order extends Model implements HasMedia
         'website-development'    => 'Website Development',
         'product-photography'    => 'Product Photography',
         'event-management'       => 'Event Management',
-        'social-media_marketing' => 'Social Media Marketing',
+        'social-media-marketing' => 'Social Media Marketing',
     ];
 
     public $table = 'orders';

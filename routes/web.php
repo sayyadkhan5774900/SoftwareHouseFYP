@@ -1,5 +1,9 @@
 <?php
+
+use App\Models\Order;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\Support\MediaStream;
 
 
 // Route::redirect('/', '/login');
@@ -64,6 +68,33 @@ Route::post('/contact-us', function (Request $request) {
 
 
 })->name('contact-us');
+
+
+
+// Download File Routes
+
+Route::get('download/order/file/{id}', function ($id) {
+  
+    $order = Order::with(['media'])->find($id);
+
+    $files = $order->getMedia('file');
+
+    return MediaStream::create('my-files.zip')->addMedia($files);
+
+})->name('order.file.download');
+
+Route::get('download/service/file/{id}', function ($id) {
+  
+    $service = Service::with(['media'])->find($id);
+
+    $files = $service->getMedia('file');
+
+    return MediaStream::create('my-files.zip')->addMedia($files);
+
+})->name('service.file.download');
+
+ 
+// Download File Routes End
 
 
 Route::get('/home', function () {
@@ -132,7 +163,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('add-new-orders', 'AddNewOrderController', ['except' => ['index', 'edit', 'update', 'show', 'destroy']]);
 
     // Client Active Orders
-    Route::resource('client-active-orders', 'ClientActiveOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('active-orders', 'ClientActiveOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
     // Add New Service
     Route::resource('add-new-services', 'AddNewServiceController', ['except' => ['index', 'store', 'edit', 'update', 'show', 'destroy']]);
@@ -147,7 +178,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('new-orders', 'NewOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Active Orders
-    Route::resource('active-orders', 'ActiveOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    Route::resource('manager-active-orders', 'ActiveOrdersController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Service Providers
     Route::resource('service-providers', 'ServiceProvidersController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);

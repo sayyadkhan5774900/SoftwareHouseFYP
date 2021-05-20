@@ -9,7 +9,7 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.client-active-orders.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.active-orders.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -41,45 +41,16 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.order.fields.address') }}
-                        </th>
-                        <td>
-                            {{ $order->address }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.order.fields.city') }}
-                        </th>
-                        <td>
-                            {{ $order->city }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.order.fields.postcode') }}
-                        </th>
-                        <td>
-                            {{ $order->postcode }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.order.fields.contact') }}
-                        </th>
-                        <td>
-                            {{ $order->contact }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.order.fields.file') }}
                         </th>
                         <td>
                             @if($order->file)
-                                <a href="{{ $order->file->getUrl() }}" target="_blank">
+                                {{-- <a href="{{ $order->file->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
-                                </a>
+                                </a> --}}
+                                <a href=" {{ route('order.file.download', $order->id) }}" target="_blank">
+                                    Download File
+                                </a>        
                             @endif
                         </td>
                     </tr>
@@ -118,7 +89,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.client-active-orders.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.active-orders.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
