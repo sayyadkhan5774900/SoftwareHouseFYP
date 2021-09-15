@@ -14,6 +14,9 @@ class ServiceProvidersController extends Controller
     {
         abort_if(Gate::denies('service_provider_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+
+        //Get All clients of currently logedin provider
+
         $users = User::with('roles')->whereHas('roles', function($query) {
             $query->where('title','Provider');
         })->get();
